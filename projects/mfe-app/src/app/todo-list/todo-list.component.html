@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row g-2 align-items-center">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          id="txtAddTask"
+          class="form-control"
+          placeholder="Add New Task"
+          [(ngModel)]="newTodoName"
+        />
+        <button class="btn btn-primary" type="button" (click)="addTodo()">
+          Add Task
+        </button>
+      </div>
+      <div class="container-fluid table-striped py-2">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Todo</th>
+              <th>Created At</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of todo">
+              <td>{{ item.id }}.</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.createdAt | date }}</td>
+              <td>
+                <button class="btn btn-info" type="button" (click)="editTodo()">
+                  Edit</button
+                >{{ " " }}
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="removeTodo($event, item.id)"
+                >
+                  Remove
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

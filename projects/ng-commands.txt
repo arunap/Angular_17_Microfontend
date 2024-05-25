@@ -1,0 +1,12 @@
+ng new mono-worspace --create-application=false
+cd mono-worspace
+ng g application host-app --styles==scss --routing --no-standalone
+ng g application mfe-app --styles==scss --routing --no-standalone
+
+cd mono-worspace
+npm i webpack webpack-cli --save-dev
+ng add @angular-architects/module-federation --project host
+ng add @angular-architects/module-federation --project mfe-app --port 4300
+
+ng serve mfe-app -o
+ng serve host-app -o
